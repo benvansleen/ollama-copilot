@@ -104,6 +104,7 @@ func (c *CompletionHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	generate := api.GenerateRequest{
 		Model:  c.model,
+        System: c.system,
 		Prompt: Prompt{Prefix: req.Prompt, Suffix: req.Suffix}.Generate(c.templ),
 		Options: map[string]interface{}{
 			"temperature": req.Temperature,
