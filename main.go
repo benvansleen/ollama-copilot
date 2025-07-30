@@ -16,6 +16,7 @@ var (
 	model        = flag.String("model", "codellama:code", "LLM model to use")
 	numPredict   = flag.Int("num-predict", 50, "Number of predictions to return")
 	templateStr  = flag.String("template", "<PRE> {{.Prefix}} <SUF> {{.Suffix}} <MID>", "Fill-in-middle template to apply in prompt")
+    system       = flag.String("system", "", "system prompt for LLM")
 )
 
 // main is the entrypoint for the program.
@@ -29,6 +30,7 @@ func main() {
 		Template:    *templateStr,
 		Model:       *model,
 		NumPredict:  *numPredict,
+        System:      *system,
 	}
 
 	go internal.Proxy(*proxyPortSSL, *portSSL)

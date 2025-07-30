@@ -77,11 +77,12 @@ type CompletionHandler struct {
 	model      string
 	templ      *template.Template
 	numPredict int
+    system     string
 }
 
 // NewCompletionHandler returns a new CompletionHandler.
-func NewCompletionHandler(api *api.Client, model string, template *template.Template, numPredict int) *CompletionHandler {
-	return &CompletionHandler{api, model, template, numPredict}
+func NewCompletionHandler(api *api.Client, model string, template *template.Template, numPredict int, system string) *CompletionHandler {
+      return &CompletionHandler{api, model, template, numPredict, system}
 }
 
 // ServeHTTP implements http.Handler.
